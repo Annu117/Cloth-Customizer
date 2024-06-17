@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/Cloth-Customizer/static/css/main.8afcfa21.css",
+    "main.js": "/Cloth-Customizer/static/js/main.16f25d39.js",
+    "static/js/453.ad2198a4.chunk.js": "/Cloth-Customizer/static/js/453.ad2198a4.chunk.js",
+    "static/media/texture3.jpg": "/Cloth-Customizer/static/media/texture3.2eae73a854e3b44b8a0e.jpg",
+    "static/media/OnlyShirtOriginal.png": "/Cloth-Customizer/static/media/OnlyShirtOriginal.3ee128cdb28ba0f82645.png",
+    "static/media/shirtO_.png": "/Cloth-Customizer/static/media/shirtO_.c7f0191cebdf7950c9b2.png",
+    "static/media/BlackPantBg.png": "/Cloth-Customizer/static/media/BlackPantBg.45f25a3b31f09b699d74.png",
+    "static/media/shirtB.png": "/Cloth-Customizer/static/media/shirtB.09f48bc765953f5d2279.png",
+    "static/media/BlackShirtBg.png": "/Cloth-Customizer/static/media/BlackShirtBg.ada6f9bf52f7b5efae05.png",
+    "static/media/BlackShirt.png": "/Cloth-Customizer/static/media/BlackShirt.1d90f819f38b1ef5fbaa.png",
+    "static/media/Suit.png": "/Cloth-Customizer/static/media/Suit.5f02e7b98de6e2e7f715.png",
+    "static/media/OnlyShirtBg.png": "/Cloth-Customizer/static/media/OnlyShirtBg.58620d53c6af36cd6b41.png",
+    "static/media/SuitBg.png": "/Cloth-Customizer/static/media/SuitBg.71fc939ca4169e902f3c.png",
+    "static/media/BlackPant.png": "/Cloth-Customizer/static/media/BlackPant.3aed1ccd60e1fac61e32.png",
+    "static/media/gray-woven-fabric.jpg": "/Cloth-Customizer/static/media/gray-woven-fabric.f3af4444b8bf43d36c0e.jpg",
+    "static/media/brown-linen-textile.jpg": "/Cloth-Customizer/static/media/brown-linen-textile.38c12ad3746c7bb82146.jpg",
+    "static/media/texture2.jpg": "/Cloth-Customizer/static/media/texture2.79e3ae19c4234f2fd77c.jpg",
+    "index.html": "/Cloth-Customizer/index.html",
+    "main.8afcfa21.css.map": "/Cloth-Customizer/static/css/main.8afcfa21.css.map",
+    "main.16f25d39.js.map": "/Cloth-Customizer/static/js/main.16f25d39.js.map",
+    "453.ad2198a4.chunk.js.map": "/Cloth-Customizer/static/js/453.ad2198a4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8afcfa21.css",
+    "static/js/main.16f25d39.js"
+  ]
+}
