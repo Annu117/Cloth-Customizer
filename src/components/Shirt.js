@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import shirtOriginal from '../assets/OnlyShirtOriginal.png';
 import shirtBg from '../assets/OnlyShirtBg.png';
-import personWithShirt from '../assets/shirtO_.png';
-import personWithShirtBg from '../assets/shirtB.png';
+import personWithShirt from '../assets/shirt.png';
+import personWithShirtBg from '../assets/ShirtBg.png';
 import BlackPant from '../assets/BlackPant.png';
 import BlackPantBg from '../assets/BlackPantBg.png';
 import BlackShirt from '../assets/BlackShirt.png';
@@ -109,13 +109,17 @@ function Shirt() {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
   };
+  const imgRef = useRef(null);
 
+  
   return (
     
     <div className="App">
       <div className="product">
         <div className="img-container">
-          <img src={selectedImage.original} className="img-1" alt="Shirt base" />
+          <img  src={selectedImage.original} className="img-1" alt="Shirt base" />
+          {/* <img src={selectedImage.original} ref={imgRef} className="img-1" alt="Shirt base" /> */}
+
           <div className="color" style={{ backgroundColor: color }}></div>
           <div className="texture" style={textureStyle}></div>
         </div>
