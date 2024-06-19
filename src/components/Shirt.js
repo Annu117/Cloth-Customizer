@@ -189,7 +189,7 @@ function Shirt() {
           onDragLeave={handleDragLeave}
           style={{
             position: 'relative',
-            border: draggedOver ? '2px solid navy' : '2px dashed #cccccc',
+            border: draggedOver ? '2px dashed gray' : '2px dashed #cccccc',
             borderRadius: '5px',
             padding: '10px',
             textAlign: 'center',
@@ -248,6 +248,7 @@ function Shirt() {
           </div>
         </div>
       </div>
+      <br></br><br></br>
     </div>
   );
 }
