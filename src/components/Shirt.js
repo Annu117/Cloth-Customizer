@@ -173,8 +173,8 @@ function Shirt() {
           <option value={texture1}>White Wallpaper Texture</option>
           {/* <option value={texture5}>Plain Gray Fabric</option>
           <option value={texture4}>Plain Bluish Gray</option> */}
-           <option value="texture5" data-image-url="https://i.ibb.co/4dNj71n/plain-gray-fabric.jpg">Plain Gray Fabric</option>
-            <option value="texture4" data-image-url="https://i.ibb.co/85Stzdk/plain-bluish-gray.jpg">Plain Bluish Gray</option>
+           // <option value="texture5" data-image-url="https://i.ibb.co/4dNj71n/plain-gray-fabric.jpg">Plain Gray Fabric</option>
+           //  <option value="texture4" data-image-url="https://i.ibb.co/85Stzdk/plain-bluish-gray.jpg">Plain Bluish Gray</option>
 
           <option value={texture2}>Pattern</option>
         </select>
