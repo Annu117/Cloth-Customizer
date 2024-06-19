@@ -160,7 +160,7 @@ function Shirt() {
       <div className="controls">
         <h1>{selectedImage.name}</h1>
           <div className='controlP'>
-          Customize your {selectedImage.name.toLowerCase()} by changing its color and applying different textures. Use the controls below to see how it looks!
+          Customize {selectedImage.name.toLowerCase()} by changing its color and applying different textures. Use the controls below to see how it looks!
         </div>
         <label for="color-input"><b>Customize color </b></label>
         <input type="color" className="color-input" value={color} onChange={handleColorChange} />
