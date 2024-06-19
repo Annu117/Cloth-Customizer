@@ -45,7 +45,7 @@ const imageOptions = [
 ];
 
 function Shirt() {
-  const [color, setColor] = useState('#ff0000');
+  const [color, setColor] = useState('');
   const [texture, setTexture] = useState('none');
   const [customTexture, setCustomTexture] = useState(null);
   const [opacity, setOpacity] = useState(0.1);
