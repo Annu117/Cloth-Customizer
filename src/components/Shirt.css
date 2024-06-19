@@ -79,8 +79,8 @@
 }
 
 .texture-button.active {
-  border-color: navy;
-  background-color: navy;
+  /* border-color: navy; */
+  background-color: rgb(115, 163, 236);
   color: #ffffff;
 }
 
