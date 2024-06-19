@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 body {
   margin: 0;
   font-family: Helvetica, sans-serif;
@@ -29,33 +31,22 @@ body {
 .home {
   text-align: center;
   margin-top: 20px;
+  color: navy;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
 }
 .product {
   position: relative;
   box-shadow: 0 0 2em rgba(0, 0, 0, 0.2);
   border-radius: 1em;
   overflow: hidden;
-  width: 24em;
-  margin-top: 2rem;
+  width: 22em;
 }
 
 .img-container {
   position: relative;
 }
 
-.img-1 {
-  width: 100%; 
-  z-index: 0;
-  opacity: 1;
-}
-
-.img-2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 2;
-}
 
 p {
   max-width: 20em;
@@ -88,86 +79,6 @@ p {
   mix-blend-mode: multiply;
 }
 
-.controls {
-  /* max-width: 20em; */
-  /* border-radius: 1em; */
-  width: 70%;
-}
-.controls h1 {
-  font-size: 1.5em;
-  /* margin-bottom: 3.5em; */
-}
-
-.controls p {
-  font-size: 0.9em;
-  color: #666;
-  width: 100%;
-}
-
-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5em 1em;
-  cursor: pointer;
-  margin-top: 1em;
-  transition: background-color 0.3s ease;
-}
-button:hover {
-  background-color: #0056b3;
-}
-label {
-  display: block;
-  margin-top: 1em;
-  cursor: pointer;
-  color: #007bff;
-}
-
-label:hover {
-  text-decoration: underline;
-}
-
-input[type="url"] {
-  width: 100%;
-  padding: 0.5em;
-  margin-top: 0.5em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.texture-select {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  appearance: none;
-  background: #fff url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"%3E%3Cpath fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/%3E%3C/svg%3E') no-repeat right 10px center;
-  background-size: 16px;
-}
-
-.texture-select option {
-  padding: 10px;
-  font-size: 16px;
-  width: 100px;
-}
-
-.texture-select:hover {
-  border-color: #888;
-}
-
-.texture-select:focus {
-  outline: none;
-  border-color: #007BFF;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.texture-select::-ms-expand {
-  display: none;
-}
 .control-panel {
   display: flex;
   flex-direction: column;
@@ -205,7 +116,7 @@ input[type="url"] {
   appearance: none;
   width: 16px;
   height: 16px;
-  background: #007BFF;
+  background: navy;
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
@@ -214,7 +125,7 @@ input[type="url"] {
 .control-item input[type="range"]::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  background: #007BFF;
+  background: navy;
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.3s ease-in-out;

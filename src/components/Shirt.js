@@ -9,10 +9,11 @@ import BlackShirt from '../assets/BlackShirt.png';
 import BlackShirtBg from '../assets/BlackShirtBg.png';
 import Suit from '../assets/Suit.png';
 import SuitBg from '../assets/SuitBg.png';
-import texture1 from '../assets/gray-woven-fabric.jpg';
-import texture2 from '../assets/texture3.jpg';
-import texture3 from '../assets/brown-linen-textile.jpg';
-import texture4 from '../assets/texture2.jpg';
+import texture1 from '../assets/white-wallpaper-textures-surface.jpg';
+import texture2 from '../assets/pattern.jpg';
+import texture3 from '../assets/white-crossed-fabric-texture.jpg';
+// import texture4 from '../assets/plain-bluish-gray.jpg';
+// import texture5 from '../assets/plain-gray-fabric.jpg'
 import './Shirt.css';
 
 const imageOptions = [
@@ -26,21 +27,21 @@ const imageOptions = [
     original: shirtOriginal,
     background: shirtBg,
   },
-  {
-    name: 'Person in suit',
-    original: Suit,
-    background: SuitBg,
-  },
-  {
-    name: 'Person in black shirt',
-    original: BlackShirt,
-    background: BlackShirtBg,
-  },
-  {
-    name: 'Person in black pant',
-    original: BlackPant,
-    background: BlackPantBg,
-  },
+  // {
+  //   name: 'Person in suit',
+  //   original: Suit,
+  //   background: SuitBg,
+  // },
+  // {
+  //   name: 'Person in black shirt',
+  //   original: BlackShirt,
+  //   background: BlackShirtBg,
+  // },
+  // {
+  //   name: 'Person in black pant',
+  //   original: BlackPant,
+  //   background: BlackPantBg,
+  // },
 
 ];
 
@@ -48,11 +49,12 @@ function Shirt() {
   const [color, setColor] = useState('');
   const [texture, setTexture] = useState('none');
   const [customTexture, setCustomTexture] = useState(null);
-  const [opacity, setOpacity] = useState(0.1);
-  const [brightness, setBrightness] = useState(1.1);
-  const [contrast, setContrast] = useState(1.2);
+  const [opacity, setOpacity] = useState();
+  const [brightness, setBrightness] = useState();
+  const [contrast, setContrast] = useState();
   const [selectedImage, setSelectedImage] = useState(imageOptions[0]);
   const textureUrlRef = useRef();
+  const [draggedOver, setDraggedOver] = useState(false);
 
   const handleColorChange = (e) => {
     setColor(e.target.value);
@@ -65,26 +67,46 @@ function Shirt() {
     setCustomTexture(null);
   };
 
-  const handleCustomTextureChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setCustomTexture(event.target.result);
+    const applyTextureUrl = () => {
+      const url = textureUrlRef.current.value.trim();
+      if (url) {
+        setCustomTexture(url);
         setTexture('custom');
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const applyTextureUrl = () => {
-    const url = textureUrlRef.current.value.trim();
-    if (url) {
-      setCustomTexture(url);
-      setTexture('custom');
-    }
-  };
-
+      }
+    };
+    const handleDrop = (event) => {
+      event.preventDefault();
+      setDraggedOver(false);
+      const file = event.dataTransfer.files[0];
+      handleFile(file);
+    };
+  
+    const handleFile = (file) => {
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          setCustomTexture(e.target.result);
+          setTexture('custom');
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+    const handleCustomTextureChange = (event) => {
+      const file = event.target.files[0];
+      handleFile(file);
+    };
+  
+    const handleDragOver = (event) => {
+      event.preventDefault();
+      setDraggedOver(true);
+    };
+    const handleDragLeave = () => {
+      setDraggedOver(false);
+    };
+    const removeImage = () => {
+      setCustomTexture(null);
+      setTexture('');
+    };
   const adjustBrightnessContrast = (color) => {
     const hex = color.replace('#', '');
     const r = parseInt(hex.substring(0, 2), 16);
@@ -113,58 +135,104 @@ function Shirt() {
 
   
   return (
-    
     <div className="App">
+      <div>
+      <div className="button-container">
+        {imageOptions.map((option, index) => (
+          <button
+            key={index}
+            onClick={() => setSelectedImage(option)}
+            className={`texture-button ${selectedImage === option ? 'active' : ''}`}
+          >
+            {option.name}
+          </button>
+        ))}
+      </div>
       <div className="product">
         <div className="img-container">
-          <img  src={selectedImage.original} className="img-1" alt="Shirt base" />
-          {/* <img src={selectedImage.original} ref={imgRef} className="img-1" alt="Shirt base" /> */}
-
+          <img src={selectedImage.original} className="img-1" alt="Shirt base" />
           <div className="color" style={{ backgroundColor: color }}></div>
           <div className="texture" style={textureStyle}></div>
         </div>
         <img src={selectedImage.background} className="img-2" alt="Shirt overlay" />
       </div>
+      </div>
       <div className="controls">
         <h1>{selectedImage.name}</h1>
-        <p>
+          <div className='controlP'>
           Customize your {selectedImage.name.toLowerCase()} by changing its color and applying different textures. Use the controls below to see how it looks!
-        </p>
-        <b>Select image: </b>
-        <select className="texture-select" onChange={(e) => setSelectedImage(imageOptions[e.target.selectedIndex])}>
-          {imageOptions.map((option, index) => (
-            <option key={index} value={option.name}>{option.name}</option>
-          ))}
-        </select>
-        <br /><br />
-        <b>Customize color: </b>
+        </div>
+        <label for="color-input"><b>Customize color </b></label>
         <input type="color" className="color-input" value={color} onChange={handleColorChange} />
         <br /><br />
-        <b>Apply texture: </b>
-        <select className="texture-select" onChange={handleTextureChange} value={texture}>
+        {/* <b>Apply texture: </b> */}
+        <label for="texture-select"><b>Apply texture </b></label>
+        <select id="texture-select" className="texture-select" onChange={handleTextureChange} value={texture}>
           <option value="none">None</option>
-          <option value={texture1}>Gray Woven Fabric</option>
-          <option value={texture2}>Grunge Seamless</option>
-          <option value={texture3}>Brown Linen Textile</option>
-          <option value={texture4}>Pattern</option>
-        </select>
-        <input type="file" id="customTexture" accept="image/*" onChange={handleCustomTextureChange} style={{ display: 'none' }} />
-        <label htmlFor="customTexture" style={{ cursor: 'pointer' }}>Choose a texture file</label>
-        <br />
-        Or
-        <div style={{ position: 'relative' }}>
-          <input
-            type="url"
-            id="textureUrl"
-            placeholder="Enter texture image URL"
-            ref={textureUrlRef}
-            style={{ width: '69%' }}
-          />
-          <button onClick={applyTextureUrl} style={{ position: 'absolute', right: 'calc(0.1% / 3)', top: "-0.35rem" }}>
-            Apply URL
-          </button>
-        </div>
+          <option value={texture3}>White Crossed Fabric Texture</option>
+          <option value={texture1}>White Wallpaper Texture</option>
+          {/* <option value={texture5}>Plain Gray Fabric</option>
+          <option value={texture4}>Plain Bluish Gray</option> */}
+           <option value="texture5" data-image-url="https://i.ibb.co/4dNj71n/plain-gray-fabric.jpg">Plain Gray Fabric</option>
+            <option value="texture4" data-image-url="https://i.ibb.co/85Stzdk/plain-bluish-gray.jpg">Plain Bluish Gray</option>
 
+          <option value={texture2}>Pattern</option>
+        </select>
+        <br />
+        <div style={{ position: 'center',textAlign: 'center', padding: '10px' }}>
+        Or
+        </div>
+        <div
+          onClick={() => document.getElementById('customTexture').click()}
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          style={{
+            position: 'relative',
+            border: draggedOver ? '2px solid navy' : '2px dashed #cccccc',
+            borderRadius: '5px',
+            padding: '10px',
+            textAlign: 'center',
+            backgroundColor: draggedOver ? 'gray' : 'white',
+            cursor: 'pointer'
+          }}
+          >
+          <input
+            type="file"
+            id="customTexture"
+            accept="image/*"
+            onChange={handleCustomTextureChange}
+            style={{ display: 'none' }}
+          />
+          {customTexture ? (
+            <div style={{ position: 'relative' }}>
+            <img src={customTexture} alt="Custom Texture" style={{ maxWidth: '10%' }} />
+            <button
+              onClick={removeImage}
+              style={{
+                position: 'absolute',
+                top: '-1.5rem',
+                right: '-0.6rem',
+                backgroundColor: 'white',
+                color: 'gray',
+                border: 'none',
+                borderRadius: '50%',
+                width: '24px',
+                height: '24px',
+                cursor: 'pointer',
+              }}
+              >
+              X
+            </button>
+          </div>
+            ) : (
+              "Drag and drop texture image here"
+            )}      {texture === 'custom' && customTexture && (
+            <div style={{ marginTop: '10px' }}>
+              {/* <img src={customTexture} alt="Custom Texture" style={{ maxWidth: '10%' }} /> */}
+            </div>
+            )}
+        </div>
         <div className="control-panel">
           <div className="control-item">
             <span htmlFor="opacityRange">Opacity:</span>
@@ -178,7 +246,6 @@ function Shirt() {
             <span htmlFor="contrastRange">Contrast:</span>
             <input type="range" id="contrastRange" min="0" max="2" step="0.1" value={contrast} onChange={(e) => setContrast(e.target.value)} />
           </div>
-          <br></br>
         </div>
       </div>
     </div>
