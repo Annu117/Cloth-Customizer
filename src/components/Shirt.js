@@ -193,7 +193,7 @@ function Shirt() {
             borderRadius: '5px',
             padding: '10px',
             textAlign: 'center',
-            backgroundColor: draggedOver ? 'gray' : 'white',
+            backgroundColor: draggedOver ? '#ccc' : 'white',
             cursor: 'pointer'
           }}
           >
