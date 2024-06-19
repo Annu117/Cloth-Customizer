@@ -7,8 +7,8 @@ import BlackPant from '../assets/BlackPant.png';
 import BlackPantBg from '../assets/BlackPantBg.png';
 import BlackShirt from '../assets/BlackShirt.png';
 import BlackShirtBg from '../assets/BlackShirtBg.png';
-import Suit from '../assets/Suit.png';
-import SuitBg from '../assets/SuitBg.png';
+import Suit from '../assets/Blazer.png';
+import SuitBg from '../assets/BlazerBg.png';
 import texture1 from '../assets/white-wallpaper-textures-surface.jpg';
 import texture2 from '../assets/pattern.jpg';
 import texture3 from '../assets/white-crossed-fabric-texture.jpg';
@@ -27,11 +27,11 @@ const imageOptions = [
     original: shirtOriginal,
     background: shirtBg,
   },
-  // {
-  //   name: 'Person in suit',
-  //   original: Suit,
-  //   background: SuitBg,
-  // },
+  {
+    name: 'Blazer',
+    original: Suit,
+    background: SuitBg,
+  },
   // {
   //   name: 'Person in black shirt',
   //   original: BlackShirt,
@@ -165,7 +165,6 @@ function Shirt() {
         <label for="color-input"><b>Customize color </b></label>
         <input type="color" className="color-input" value={color} onChange={handleColorChange} />
         <br /><br />
-        {/* <b>Apply texture: </b> */}
         <label for="texture-select"><b>Apply texture </b></label>
         <select id="texture-select" className="texture-select" onChange={handleTextureChange} value={texture}>
           <option value="none">None</option>
